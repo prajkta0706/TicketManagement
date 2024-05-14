@@ -1,0 +1,13 @@
+.navLinkCss{
+    text-decoration: none;
+    text-underline-offset: unset;
+    color: rgb(255, 255, 255);
+}
+.navIcons{
+    color: #fff !important;
+}
+.active{
+    background: gray;
+    color: #fff;
+    display: flex;
+}

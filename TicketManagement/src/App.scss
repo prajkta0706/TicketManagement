@@ -1,0 +1,73 @@
+$boxS :  3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+.App {
+    width: 100%;
+    height: 100%;
+}
+
+.Form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+    background-image: url('./assets/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.border {
+    width: 100%;
+    min-width: 350px;
+    background: #f6f6f652;
+    border-radius: 1rem;
+    // box-shadow: 3px -3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.FormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px 0px;
+}
+
+.field {
+    width: 100%;
+    background-color: transparent;
+}
+
+.signuptext {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.eachGridItem {
+    background: #dedede;
+    Padding: 10px;
+    border-radius: 10px;
+    box-shadow: $boxS;
+    text-align: center;
+    transition: 0.5s;
+    margin:10px;
+}
+.eachGridItem:hover{
+     box-shadow: 5px 5px 10px 4px rgba(8, 0, 0, 0.75);
+}
+
+.PagginationBtn {
+    margin: 10px 0px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
