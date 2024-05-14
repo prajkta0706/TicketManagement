@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomField from '../../component/CustomField';
 import * as yup from 'yup';
 import { addTicket } from '../../Redux/Slice/userSlice';
+import toast from 'react-hot-toast';
 
 function UserDashboard() {
   const statusUser = useSelector((state) => state?.userrole)
@@ -30,6 +31,9 @@ function UserDashboard() {
 
   const handleSubmit = async (data, { resetForm }, event) => {
     dispatch(addTicket(data))
+    toast.success("Ticket Generated")
+    
+    resetForm()
     console.log(data)
   }
 

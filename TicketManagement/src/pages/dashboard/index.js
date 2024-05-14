@@ -1,109 +1,3 @@
-// import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-// import React, { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import axios from 'axios'
-// import { Padding } from '@mui/icons-material'
-// import { logOutUser } from '../../Redux/Slice/Slice'
-// import { useNavigate } from 'react-router-dom'
-// const api = "https://7q3k6vhat1.execute-api.ap-south-1.amazonaws.com/dev/profile"
-
-// function Dashbard() {
-//     const existUser = useSelector((state) => state?.user?.userExists)
-//     console.log("existUser",existUser)
-//     const navigate = useNavigate()
-//     useEffect(() => {
-//         if (existUser) {
-//             navigate("/Dashboard")
-//         }else{
-//             navigate("/")
-//         }
-//     }, [existUser])
-
-
-//     const dispatch = useDispatch();
-//     // const storeData = useSelector((state) => state.user.data)
-//     // console.log("store data dashboard ==>", storeData)
-//     const [allData, setAllData] = useState([])
-//     const [page, setPage] = useState(1)
-//     // const getAllData = async () => {
-//     //     try {
-//     //         const res = await axios({
-//     //             method: "post",
-//     //             url: api,
-//     //             headers: {
-//     //                 'Accept': '*/*'
-//     //             },
-//     //             data: {
-//     //                 "count": 150,
-//     //                 "country_code": "en_IN",
-//     //                 "aadhar": true,
-//     //                 "dl": true,
-//     //                 "credit": true,
-//     //                 "debit": true,
-//     //                 "pan": true,
-//     //                 "passport": true,
-//     //                 "ssn": false
-//     //             }
-//     //         });
-//     //         console.log("response ==> ", res.data);
-//     //         var startIndex = (page - 1) * 10;
-//     //         var endIndex = startIndex + 10;
-//     //         setAllData(res?.data?.data?.slice(startIndex, endIndex))
-//     //     } catch (error) {
-//     //         console.log("error ==> ", error);
-//     //     }
-//     // };
-
-
-//     // console.log('my data ==>', allData)
-//     // useEffect(() => {
-//     //     getAllData()
-//     // }, [])
-//     // useEffect(() => {
-//     //     getAllData()
-//     // }, [page])
-
-//     // const PagginationData = (...arg) => {
-//     //     if (arg == "next") {
-//     //         setPage(page + 1)
-//     //     }
-//     //     else if (arg == "back") {
-//     //         setPage(page - 1)
-//     //     }
-//     //     else {
-//     //         console.log("nothing")
-//     //     }
-//     // }
-
-
-//     return (
-//         <div >
-//             <>asdkjasdkjabsd</>
-//             {/* <Grid container xs={12} style={{ margin: "0 auto" }}>
-//                 {
-//                     allData.map((item, index) => (
-//                         <Grid item xs={12} sm={6} md={6} lg={4} >
-//                             <Box className="eachGridItem" >
-//                                 <h3>Name : {item?.first_name} {item?.last_name}</h3>
-//                                 <h6>Address : {item?.address}</h6>
-//                                 <h6>Nationality : {item?.nationality}</h6>
-//                                 <h6>sex : {item?.sex}</h6>
-//                                 <h6>Adhar Number : {item?.aadhar}</h6>
-//                             </Box>
-//                         </Grid>
-//                     ))
-//                 }
-//             </Grid>
-//             <Box className="PagginationBtn">
-//                 <Button variant="contained" onClick={() => PagginationData("next")}> Next</Button>
-//                 <Button variant="contained" onClick={() => PagginationData("back")}> Back</Button>
-//                 <Button variant="contained" onClick={() => dispatch(logOutUser())}> Logout</Button>
-//             </Box> */}
-//         </div>
-//     )
-// }
-
-// export default Dashbard
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -126,13 +20,23 @@ function Dashbard() {
   const userExist = useSelector((state) => state?.user?.data)
   console.log("userExist data in the dashboard", userExist)
   let exist = userExist.find((data) => data?.email == localStorage.getItem('email'))
+  // useEffect(() => {
+  //   console.log("exist ", exist)
+  //   // console.log("is condition apply", !exist?.status, !exist?.Password == dataProps?.Password, !exist?.email == dataProps?.email)
+  //   if (!exist?.status || !exist?.email == localStorage.getItem('email') || !exist?.email == undefined || !exist?.Password == localStorage.getItem('Password') || !exist?.Password == undefined) {
+  //     navigate("/")
+  //   }
+  // }, [])
   useEffect(() => {
-    console.log("exist ", exist)
-    // console.log("is condition apply", !exist?.status, !exist?.Password == dataProps?.Password, !exist?.email == dataProps?.email)
-    if (!exist?.status || !exist?.email == localStorage.getItem('email') || !exist?.email == undefined) {
-      navigate("/")
+    console.log("exist ", exist);
+    const storedEmail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('Password');
+    
+    if (!exist || exist.email !== storedEmail || exist.Password !== storedPassword) {
+      navigate("/");
     }
-  }, [])
+  }, []);
+  
   // console.log("data on the dashboard", userExist)
 
 

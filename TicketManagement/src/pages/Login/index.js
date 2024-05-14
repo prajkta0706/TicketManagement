@@ -51,6 +51,7 @@ function Login() {
   const handleSubmit = async (data, { resetForm }) => {
     console.log(data)
     localStorage.setItem("email", data.email)
+    localStorage.setItem("Password", data.Password)
     let a = dispatch(checkLogin(data))
       navigate("/Dashboard", { state: { email: data.email, Password: data.Password } })
   }

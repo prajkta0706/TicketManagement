@@ -9,10 +9,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 export default function SideBar({ HandleSideBar, open, type }) {
 
     const navigate = useNavigate()
+    function Logout (){
+        localStorage.removeItem("email")
+        localStorage.removeItem("Password")
+        console.log("Logging out...");
+        localStorage.removeItem("email");
+        console.log("Email removed from localStorage");
+    }
     const sideBarData = [
         { name: 'Dashboard', url: "/dashboard", icon: <GridViewIcon /> },
         { name: 'All Tickets', url: "/alltickets", icon: <GridViewIcon /> },
-        { name: 'LogOut', url: "/", icon: <LogoutIcon /> },
+        { name: 'LogOut', url: "/", icon: <LogoutIcon />  },
     ];
 
     const DrawerList = (
@@ -25,7 +32,7 @@ export default function SideBar({ HandleSideBar, open, type }) {
                                 <ListItemIcon className='navIcons'>
                                     {item.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={item.name} />
+                                <ListItemText primary={item.name} onClick ={ Logout} />
                             </ListItemButton>
                         </ListItem>
                     </NavLink>
